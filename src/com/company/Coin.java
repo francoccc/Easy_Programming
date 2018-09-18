@@ -10,7 +10,7 @@ public class Coin {
     private int[] F = new int[100001];
     private int[] OLDF = new int[100001];
 
-    private int getNum(int i,int j, int cost){
+    private int getNum(int i, int j, int cost){
         int num = 0;
         num = (OLDF[j] + OLDF[j - cost]) % P;
         if(i <= n_1){
@@ -23,6 +23,7 @@ public class Coin {
         for(int i = 1;i <= m;i++){
             OLDF[i] = F[i];
         }
+        F[0] = 1;
     }
 
     public void run(){
@@ -37,12 +38,12 @@ public class Coin {
         F[0] = 1;
         OLDF[0] = 0;
 
-        for(int i = 2;i <= n_1 + n_2;i++){
-            int cost = N.get(i);
+        for(int i = 1;i <= n_1 + n_2;i++){
+            int cost = N.get(i - 1);
+            if(i != 1) verse();
             for (int j = cost; j <= m; j++) {
-                    F[j] = getNum(i,j, cost);
+                    F[j] = getNum(i, j, cost);
             }
-            verse();
         }
 
         System.out.println(F[m]);
