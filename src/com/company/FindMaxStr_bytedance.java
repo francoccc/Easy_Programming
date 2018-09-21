@@ -2,11 +2,7 @@ package com.company;
 
 import java.util.*;
 
-/**
- * Author franco
- * the next will be better
- */
-public class Main {
+public class FindMaxStr_bytedance {
     private int n;
     private LinkedList<Str> list = new LinkedList<>();
     private HashMap<Integer,String> ans = new HashMap<>();
@@ -22,7 +18,7 @@ public class Main {
         }
     }
 
-    public Main(){
+    public FindMaxStr_bytedance(){
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         sc.nextLine();
@@ -30,7 +26,7 @@ public class Main {
         for(int i = 1;i<=n;i++){
             StringBuilder s = new StringBuilder(sc.nextLine());
             list.addLast(new Str(i,s));
-    }
+        }
         run();
     }
 
@@ -63,8 +59,4 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        // write your code here
-        ABC abc = new ABC();
-    }
 }
