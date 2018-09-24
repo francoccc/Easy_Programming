@@ -1,70 +1,35 @@
 package com.company;
 
-import java.util.*;
+import com.company.tencent.ReverseString;
+import com.company.tencent.StringMove;
+import com.company.tencent.Tuple;
 
 /**
  * Author franco
  * the next will be better
  */
+
 public class Main {
-    private int n;
-    private LinkedList<Str> list = new LinkedList<>();
-    private HashMap<Integer,String> ans = new HashMap<>();
-    private int[] visit = new int[30];
-
-    private class Str{
-        StringBuilder str;
-        int id;
-
-        Str(int id,StringBuilder str){
-            this.id = id;
-            this.str = str;
+    private int num = 0;
+    public int reverse(int a,int j){
+        if(a==0){
+            return 0;
+        }
+        else{
+            num++;
+            int b = a % 10;
+            return reverse(a/10,j+1) + (int)Math.pow(10,num-j)*b;
         }
     }
 
-    public Main(){
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        sc.nextLine();
-
-        for(int i = 1;i<=n;i++){
-            StringBuilder s = new StringBuilder(sc.nextLine());
-            list.addLast(new Str(i,s));
-    }
-        run();
-    }
-
-    private void run(){
-        int ind = 0;
-        while(!list.isEmpty()){
-            Iterator iter = list.listIterator();
-            while(iter.hasNext()){
-                Str obj = (Str)iter.next();
-                visit[obj.str.charAt(ind) - 'a']++;
-            }
-
-            iter = list.listIterator();
-            ArrayList<Str> objs = new ArrayList<>();
-            while(iter.hasNext()){
-                Str obj = (Str)iter.next();
-                if(visit[obj.str.charAt(ind) - 'a'] == 1){
-                    ans.put(new Integer(obj.id),obj.str.substring(0,ind+1));
-                    objs.add(obj);
-                }
-            }
-            for(int i = 0;i<objs.size();i++){
-                Str obj = objs.get(i);
-                list.remove(obj);
-            }
-        }
-
-        for(int i = 1;i<=n;i++){
-            System.out.println(ans.get(new Integer(i)));
-        }
+    Main(){
+        int a = 12345;
+        a = reverse(a,1);
+        System.out.println(a);
     }
 
     public static void main(String[] args) {
         // write your code here
-        ABC abc = new ABC();
+        Tuple t = new Tuple();
     }
 }
